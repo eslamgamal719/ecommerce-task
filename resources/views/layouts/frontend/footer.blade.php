@@ -76,23 +76,7 @@
 
 
 </script>
-<script>
-    function add_to_cart($product_id) {
 
-        $.ajax({
-            url: "{{ route('cart.store') }}",
-            method: "POST",
-            data: {
-                "product_id": $product_id,
-                "_token": "{{ csrf_token() }}",
-            }, function(data) {
-                // $('.cart_count').content();
-                console.log($('.cart_count').content());
-
-            }
-        });
-    }
-</script>
 
 @stack('script')
 <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->

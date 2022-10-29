@@ -13,7 +13,7 @@ class OrderRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class OrderRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'full_name' => ['required', 'max:255', 'string'],
+            'email'     => ['email', 'required'],
+            'mobile'    => ['required'],
+            'address'   => ['required', 'max:255', 'string'],
+            'city'      => ['required', 'max:255', 'string'],
+            'country'   => ['required', 'max:255', 'string'],
         ];
     }
 }

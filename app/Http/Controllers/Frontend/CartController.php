@@ -12,7 +12,7 @@ class CartController extends Controller
 
     public function index()
     {
-//        return view('');
+        return view('frontend.cart');
     }
 
     public function store(Request $request)
@@ -27,8 +27,17 @@ class CartController extends Controller
             return redirect()->route('cart.index')->with('success', 'Item is already in your cart!');
         }
 
-        Cart::add($product->id, $product->title, 1, $product->price)->associate('App\Product');
-//        return redirect()->route('cart.index')->with('success', 'Item added successfully');
-        return Cart::count();
+        Cart::add($product->id, $product->title, 1, $product->price)->associate('App\Models\Product');
+        return redirect()->route('cart.index')->with('success', 'Item added successfully');
+    }
+
+    public function update(Request $request)
+    {
+        Cart::update($request->rowId, $request->qty_value);
+    }
+
+    public function destroy(Request $request)
+    {
+        Cart::remove($request->rowId);
     }
 }

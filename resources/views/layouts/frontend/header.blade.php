@@ -18,9 +18,11 @@
                     <ul class="navbar-nav ml-auto">
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="cart.html">
+                                <a class="nav-link" href="{{ route('cart.index') }}">
                                     <i class="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart
-                                    <small class="text-gray">(2)</small>
+                                    @if(Cart::instance('default')->count() > 0)
+                                        <small class="text-gray cart_count">({{ Cart::instance('default')->count() }})</small>
+                                    @endif
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -37,9 +39,11 @@
                             </li>
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="cart.html">
+                                <a class="nav-link" href="{{ route('cart.index') }}">
                                     <i class="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart
-                                    <small class="text-gray cart_count">(2)</small>
+                                    @if(Cart::instance('default')->count() > 0)
+                                        <small class="text-gray cart_count">({{ Cart::instance('default')->count() }})</small>
+                                    @endif
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
