@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
 use App\Models\Order;
 use App\Models\Product;
-use Illuminate\Http\Request;
 use \Cart;
 
 class CheckoutController extends Controller

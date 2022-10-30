@@ -2,15 +2,12 @@
 <aside class="app-sidebar">
     <div class="app-sidebar__user">
         <div>
-            <p class="app-sidebar__user-name">{{-- auth()->user()->name --}}</p>
-            <p class="app-sidebar__user-designation">{{-- implode(',', auth()->user()->roles->pluck('name')->toArray()) --}}</p>
+            <p class="app-sidebar__user-name">{{ auth()->user()->full_name }}</p>
         </div>
     </div>
 
     <ul class="app-menu">
         <li><a class="app-menu__item" href="{{ route('admin.dashboard') }}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
-
-
 
         @can('products_list')
              <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-gear"></i><span class="app-menu__label">Products</span><i class="treeview-indicator fa fa-angle-right"></i></a>
@@ -37,7 +34,6 @@
                 </ul>
             </li>
         @endif
-
 
     </ul>
 

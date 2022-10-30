@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\BrandRequest;
 use App\Http\Requests\ProductRequest;
 use App\Models\Brand;
 use App\Models\Product;
