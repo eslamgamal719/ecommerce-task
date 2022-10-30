@@ -15,8 +15,8 @@ class OrderSeeder extends Seeder
      */
     public function run()
     {
-        $orders = Order::factory(100000)->make();
-        $orders->chunk(5000)->each(function($chunk) {
+        $orders = Order::factory(500000)->make();
+        $orders->chunk(20000)->each(function($chunk) {
            Order::insert($chunk->toArray());
         });
     }

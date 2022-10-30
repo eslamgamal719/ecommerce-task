@@ -18,4 +18,5 @@ Route::group(['middleware' => ['auth', 'admin'], 'as' => 'admin.', 'prefix' => '
     Route::resource('brands', BrandController::class);
     Route::resource('products', ProductController::class);
     Route::resource('orders', OrderController::class);
+    Route::post('update-status', [OrderController::class, 'update_status'])->name('order.update.status');
 });

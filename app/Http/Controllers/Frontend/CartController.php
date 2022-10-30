@@ -22,12 +22,13 @@ class CartController extends Controller
         $duplicates = Cart::search(function($cartItem, $rowId) use ($request) {
             return $cartItem->id == $request->product_id;
         });
+        $quantity = ($request->quantity > 1) ? $request->quantity : 1;
 
         if($duplicates->isNotEmpty()) {
             return redirect()->route('cart.index')->with('success', 'Item is already in your cart!');
         }
 
-        Cart::add($product->id, $product->title, 1, $product->price)->associate('App\Models\Product');
+        Cart::add($product->id, $product->title, $quantity, $product->price)->associate('App\Models\Product');
         return redirect()->route('cart.index')->with('success', 'Item added successfully');
     }
 

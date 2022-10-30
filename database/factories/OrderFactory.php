@@ -14,8 +14,6 @@ class OrderFactory extends Factory
      */
     public function definition()
     {
-//        $products = Product::hasQuantity()->inRandomOrder()->take(2)->get();
-//        $total = $products->sum('price');
         $subtotal   = mt_rand(500, 3000);
         $tax        = mt_rand(50, 400);
         $total      = $subtotal + $tax;

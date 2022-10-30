@@ -63,12 +63,6 @@
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                             @endif
-
-                            @if(Route::has('register'))
-                                <a href="{{ route('register') }}" class="btn btn-secondary float-right">
-                                    {{ __("Haven't an account") }}
-                                </a>
-                            @endif
                         </div>
                     </div>
                 </form>

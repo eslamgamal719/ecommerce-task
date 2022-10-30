@@ -21,7 +21,7 @@
         </div>
 
         <div class="col-md-6 col-lg-3">
-            <div class="widget-small warning coloured-icon"><i class="icon fa fa-list fa-3x"></i>
+            <div class="widget-small warning coloured-icon"><i class="icon fa fa-product-hunt fa-3x"></i>
                 <div class="info">
                     <h4>Products</h4>
                     <p><b>{{ $products_count }}</b></p>
@@ -30,7 +30,7 @@
         </div>
 
         <div class="col-md-6 col-lg-3">
-            <div class="widget-small warning coloured-icon"><i class="icon fa fa-list fa-3x"></i>
+            <div class="widget-small info coloured-icon"><i class="icon fa fa-home fa-3x"></i>
                 <div class="info">
                     <h4>Brands</h4>
                     <p><b>{{ $brands_count }}</b></p>
@@ -39,7 +39,7 @@
         </div>
 
         <div class="col-md-6 col-lg-3">
-            <div class="widget-small primary coloured-icon"><i class="icon fa fa-play fa-3x"></i>
+            <div class="widget-small primary coloured-icon"><i class="icon fa fa-list fa-3x"></i>
                 <div class="info">
                     <h4>Orders</h4>
                     <p><b>{{ $orders_count }}</b></p>
