@@ -34,11 +34,17 @@ class CartController extends Controller
 
     public function update(Request $request)
     {
-        Cart::update($request->rowId, $request->qty_value);
+        if(Cart::update($request->rowId, $request->qty_value)) {
+            return true;
+        }
+        return false;
     }
 
     public function destroy(Request $request)
     {
-        Cart::remove($request->rowId);
+        if(Cart::remove($request->rowId)) {
+            return true;
+        }
+        return false;
     }
 }

@@ -21,7 +21,7 @@ class UserFactory extends Factory
             'full_name' => $this->faker->firstName . " " . $this->faker->lastName,
             'email' => $this->faker->unique()->safeEmail(),
             'mobile' => $this->faker->unique()->numerify("010########"),
-            'password' => bcrypt(123456789),
+            'password' => bcrypt('123456789'),
             'role_name' => 'client',
         ];
     }
