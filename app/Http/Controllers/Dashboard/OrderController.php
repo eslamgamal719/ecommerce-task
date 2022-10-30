@@ -24,6 +24,7 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         if($order->delete()) {
+            activity()->causedBy(auth()->user())->performedOn($order)->createdAt(now())->log('deleted');
             return redirect()->route('admin.orders.index')->with(['success' => 'Order deleted successfully']);
         }
         return redirect()->route('admin.orders.index')->with(['error' => 'Operation not done, there is an error']);
@@ -34,6 +35,8 @@ class OrderController extends Controller
         $order = Order::find($request->order_id);
         $order->status = $request->status;
         $order->save();
+
+        activity()->causedBy(auth()->user())->performedOn($order)->createdAt(now())->log('updated');
     }
 
 }

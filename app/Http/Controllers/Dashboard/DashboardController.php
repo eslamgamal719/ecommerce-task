@@ -7,8 +7,7 @@ use App\Models\Brand;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
-use Database\Seeders\OrderSeeder;
-use Illuminate\Http\Request;
+use Spatie\Activitylog\Models\Activity;
 
 class DashboardController extends Controller
 {
@@ -18,6 +17,7 @@ class DashboardController extends Controller
         $data['products_count'] = Product::all()->count();
         $data['brands_count'] = Brand::all()->count();
         $data['orders_count'] = Order::all()->count();
+        $data['activities'] = Activity::paginate(config('constants.paginator'));
 
         return view('dashboard.welcome', $data);
     }

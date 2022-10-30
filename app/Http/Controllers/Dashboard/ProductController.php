@@ -66,6 +66,8 @@ class ProductController extends Controller
             $product->save();
         }
 
+        activity()->causedBy(auth()->user())->performedOn($product)->createdAt(now())->log('created');
+
         if($product) {
             return redirect()->route('admin.products.index')->with(['success' => 'Product created successfully']);
         }
@@ -115,6 +117,8 @@ class ProductController extends Controller
             $product->save();
         }
 
+        activity()->causedBy(auth()->user())->performedOn($product)->createdAt(now())->log('updated');
+
         if($product) {
             return redirect()->route('admin.products.index')->with(['success' => 'Product updated successfully']);
         }
@@ -131,6 +135,7 @@ class ProductController extends Controller
             unlink('dashboard/products/' . $product->image);
         }
         if($product->delete()) {
+            activity()->causedBy(auth()->user())->performedOn($product)->createdAt(now())->log('deleted');
             return redirect()->route('admin.products.index')->with(['success' => 'Product deleted successfully']);
         }
         return redirect()->route('admin.products.index')->with(['error' => 'Operation not done, there is an error']);

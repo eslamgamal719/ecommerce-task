@@ -44,6 +44,8 @@ class BrandController extends Controller
 
         $brand = Brand::create($data);
 
+        activity()->causedBy(auth()->user())->performedOn($brand)->createdAt(now())->log('created');
+
         if($request->hasFile('image')) {
             $file = $request->file('image');
             $file_name = Str::random(3) . time() . '.' . $file->getClientOriginalExtension();
@@ -97,6 +99,9 @@ class BrandController extends Controller
             $brand->image = $file_name;
             $brand->save();
         }
+
+        activity()->causedBy(auth()->user())->performedOn($brand)->createdAt(now())->log('updated');
+
         if($brand) {
             return redirect()->route('admin.brands.index')->with(['success' => 'Brand updated successfully']);
         }
@@ -113,6 +118,7 @@ class BrandController extends Controller
             unlink('dashboard/brands/' . $brand->image);
         }
         if($brand->delete()) {
+            activity()->causedBy(auth()->user())->performedOn($brand)->createdAt(now())->log('deleted');
             return redirect()->route('admin.brands.index')->with(['success' => 'Brand deleted successfully']);
         }
         return redirect()->route('admin.brands.index')->with(['error' => 'Operation not done, there is an error']);

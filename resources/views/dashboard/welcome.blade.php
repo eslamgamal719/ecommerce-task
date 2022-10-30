@@ -48,4 +48,37 @@
         </div>
     </div>
 
-    @endsection
+
+    <div class="tile mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover mt-4">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Creator/Updator Name</th>
+                        <th>Subject Type</th>
+                        <th>Subject ID</th>
+                        <th>Description</th>
+                        <th>Time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @forelse($activities as $activity)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ \App\Models\User::find($activity->causer_id)->full_name }}</td>
+                            <td>{{ explode("\\", $activity->subject_type)[2] }}</td>
+                            <td>{{ $activity->subject_id }}</td>
+                            <td>{{ $activity->description }}</td>
+                            <td>{{ $activity->description == 'created' ? $activity->created_at : $activity->updated_at }}</td>
+                        </tr>
+                    @empty
+                    @endforelse
+                    </tbody>
+                </table>
+                    {{ $activities->appends(request()->query())->links() }}
+            </div>
+        </div>
+    </div>
+@endsection
